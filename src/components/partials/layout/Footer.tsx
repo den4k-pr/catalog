@@ -15,7 +15,7 @@ export function Footer() {
                         <p className="footer-text">04-088</p>
                         <p className="footer-text">Warszawa, Majdańska 16/27</p>
                         {contacts.map((contact, index) =>
-                            <p className="footer-text">{index == 0 ? "P" : "E"}: {contact.name}</p> 
+                            <p key={contact.name} className="footer-text">{index == 0 ? "P" : "E"}: {contact.name}</p> 
                         )}
                         <Link href="https://www.liveinternet.ru/?terracottaland.eu">
                             <Image style={{marginTop: "7px"}} src="/footerLink.gif" alt="" width={88} height={31}/>
