@@ -1,0 +1,130 @@
+
+
+.navigation{
+    font-family: 'Montserrat';
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-column-gap: 30px;
+    background-color: #f6f6f6;
+    padding: 10px;
+    border-radius: 3px;
+    border-bottom: 2px solid #cacaca;
+}
+.select{
+    background-color: #204b69;
+    color: #fff;
+    font-size: 16px;
+    line-height: 37px;
+    border-radius: 5px;
+    width: 180px;
+    cursor: pointer;
+}
+.options{
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    width: 180px;
+    margin-top: 10px;
+    border: 1px solid #607b8e;
+    border-radius: 7px;
+    overflow: hidden;
+}
+.option{
+    padding: 0 10px;
+    background-color: #fff;
+    color: #000;
+    transition: .3s;
+    border-bottom: 1px solid #607b8e;
+}
+.option:hover{
+    background-color: #81a3bb;
+    color: #fff;
+}
+.selected-option{
+    padding: 2px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.selected-option:after{
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url("/arrow.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+}
+
+.search{
+    position: relative;
+    width: 100%;
+
+    &-img{
+        position: absolute;
+        z-index: 2;
+        top: 3px;
+        left: 5px;
+    }
+    &-input{
+        z-index: 1;
+        max-width: 300px;
+        width: 100%;
+        padding: 10px 15px 10px 40px;
+        border-radius: 7px;
+        font-size: 16px;
+        border: 1px solid #cfcfcf;
+    }
+    &-input:focus{
+        background-color: #e2e3e4;
+    }
+
+    &__list{
+        background-color: #fff;
+        position: absolute;
+        max-width: 300px;
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #607b8e;
+        border-bottom: 2px solid #607b8e;
+        margin-top: 10px;
+        border-radius: 7px;
+        z-index: 2;
+
+        &-link{
+            display: block;
+            font-size: 16px;
+            line-height: 25px;
+            border-bottom: 1px solid #607b8e;
+        }
+        &-link:hover{
+            color: #066eb9;
+            border-bottom: 1px solid #066eb9;;
+        }
+    }
+}
+
+
+@media(max-width: 800px) {
+    .navigation{
+        grid-template-columns: 1fr;
+    }
+    .select{
+        margin: 0 auto;
+    }
+    .search{
+        max-width: 500px;
+        margin: 20px auto 0 auto;
+        
+        &-input{
+            max-width: 100%;
+            padding: 10px 0 10px 40px;
+        }
+
+        &-img{
+            top: 5px;
+            left: 10px;
+        }
+    }
+}

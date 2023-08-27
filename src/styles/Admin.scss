@@ -1,0 +1,197 @@
+
+
+.adminButton{
+    font-size: 18px;
+    color: #fff;
+    background-color: #0c59db;
+    width: 40px;
+    min-height: 40px;
+    text-align: center;
+    border-radius: 9px;
+}
+.adminButton:hover{
+    opacity: .7;
+}
+
+.adminNavigation{
+    border-radius: 7px;
+    padding: 20px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f6f6;
+    font-family: 'Montserrat';
+    gap: 20px;
+
+    &-signOut{
+        font-size: 16px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+    &-button{
+        background-color: #ffffff;
+        color: #272727;
+        font-size: 16px;
+        border-radius: 7px;
+        padding: 10px;
+        transition: .3s;
+        
+    }
+    &-button:hover{
+        background-color: #c9c9c9;
+        color: #fff;
+    }
+    
+}
+.admin{
+    background-color: #f6f6f6;
+    border-radius: 7px;
+    padding: 20px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Montserrat';
+
+    &__posts{
+        display: flex;
+        flex-direction: column;
+
+        gap: 20px;
+
+        &-create{
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 22px;
+            background-color: #0c59db;
+            padding: 10px 15px;
+            border-radius: 0 0 0 7px;
+            transition: .2s;
+        }
+        &-create:hover{
+            opacity: .7;
+        }
+
+        &-post{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            padding: 15px;
+            border-radius: 7px;
+            background-color: #fff;
+            border: 1px solid #a1a1a1;
+            font-size: 16px;
+            transition: .2s;
+            cursor: pointer;
+
+            &-form{
+                cursor: auto;
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background-color: #27272736;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                top: 0;
+                left: 0;
+                
+                opacity: 0;
+                visibility: hidden;
+                z-index: 5;
+
+                .post-form{
+                    display: flex;
+                    flex-direction: column;
+                    background-color: #fff;
+                    max-width: 500px;
+                    width: 100%;
+                    padding: 30px;
+                    border-radius: 5px;
+                    height: 700px;
+                    margin: 0 15px;
+                
+                    overflow-y: scroll;
+
+                    &-boxImg{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        margin: 10px 0;
+
+                        img{
+                            max-width: 70px;
+                        }
+                    }
+
+                    &-box{
+                        margin: 0 auto;
+                        display: flex;
+                        gap: 15px;
+                        margin-top: 15px;
+                    }
+
+                    &-select{
+                        background-color: rgb(208, 208, 208);
+                        padding: 10px;
+                        border-radius: 7px;
+                    }
+
+                    &-label{
+                        font-size: 16px;
+                        padding: 10px 0;
+                        line-height: 24px;
+                    }
+
+                    &-input{
+                        background-color: rgb(208, 208, 208);
+                        padding: 10px;
+                        border-radius: 7px;
+                    }
+
+                    &__buttons{
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-around;
+
+                        gap: 10px;
+
+                        &-delete,
+                        &-save{
+                            border-radius: 10px;
+                            padding: 10px 30px;
+                            margin: 10px 0;
+                            transition: .2s;
+                        }
+                        &-delete:hover{
+                            opacity: .6;
+                        }
+                        &-save:hover{
+                            opacity: .6;
+                        }
+
+                        &-save{
+                            background-color: #3db61f;
+                        }
+
+                        &-delete{
+                            background-color: #d40e0e;
+                        }
+                    }
+                }
+            }
+            &-formActive{
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        &-post:hover{
+            background-color: #c9c9c9;
+        }
+    }
+}
