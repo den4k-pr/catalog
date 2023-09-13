@@ -23,28 +23,18 @@ export const AdminProductsProduct = ({
   const [newImages, setNewImages] = useState<string[]>(product.images);
   const [newDescription, setNewDescription] = useState(product.description);
   const [newPrice, setNewPrice] = useState(product.price);
-  const [newSale, setNewSale] = useState(false);
+  const [newSale] = useState(false);
   const [newSlug, setNewSlug] = useState(product.slug);
   const [newCategory, setNewCategory] = useState(product.category);
   const [newCategorySlug, setNewCategorySlug] = useState(product.categorySlug);
 
   const [categories, setCategories] = useState<Category[]>([]);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        if (typeof reader.result === "string") {
-          const updatedImages = [...newImages];
-          updatedImages[index] = reader.result;
-          setNewImages(updatedImages);
-        }
-      };
-
-      reader.readAsDataURL(file);
-    }
+  const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const { value } = e.target;
+    const updatedImages = [...newImages];
+    updatedImages[index] = value;
+    setNewImages(updatedImages);
   };
 
   // Функція для додавання нової картинки
@@ -131,15 +121,17 @@ export const AdminProductsProduct = ({
           <form onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit} className="post-form">
             <label className="post-form-label">Images:</label>
             {newImages.map((image, idx) => (
-            <div className="post-form-boxImg" key={idx}>
-              {image && <img style={{width: "40px", height: "40px"}} src={image} alt={`Image ${idx}`} />}
-              <input
-                name={`image-${idx}`}
-                className="post-form-input"
-                type="file"
-                onChange={(e) => handleImageChange(e, idx)}
-              />
-            </div>
+              <div className="post-form-boxImg" key={idx}>
+                {image && <img style={{ width: "60px", height: "60px" }} src={image} alt={`Image ${idx}`} />}
+                <input
+                  name={`image-${idx}`}
+                  className="post-form-input"
+                  style={{maxWidth: "300px", width: "100%", marginLeft: "15px"}}
+                  type="text" // Змінити тип на "text"
+                  value={image} // Додати значення зі стану newImages
+                  onChange={(e) => handleImageUrlChange(e, idx)} // Додати обробник подій для зміни URL зображення
+                />
+              </div>
             ))}
             <div className="post-form-box">
               <button className="adminButton" type="button" onClick={addNewImage}>
