@@ -72,38 +72,13 @@ export const CreateProduct = ({ handleToggleCreate, createToggle }: AdminProduct
     window.location.reload();
   };
 
-  const handleImageChange = async (e: ChangeEvent<HTMLInputElement>, index: number) => {
-    const files = e.target.files;
-    if (!files) return;
-
-    const imagesArray: string[] = [...formData.images];
-    const readFilePromises: Promise<void>[] = [];
-
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
-
-      readFilePromises.push(
-        new Promise<void>((resolve, reject) => {
-          reader.onloadend = () => {
-            if (reader.result) {
-              imagesArray[index] = reader.result as string;
-              resolve();
-            } else {
-              reject(new Error("Failed to read file"));
-            }
-          };
-          reader.readAsDataURL(file);
-        })
-      );
-    }
-
-    try {
-      await Promise.all(readFilePromises);
-      setFormData((prevState) => ({ ...prevState, images: imagesArray }));
-    } catch (error) {
-      console.log(error);
-    }
+  const handleImageUrlChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+    const { value } = e.target;
+    setFormData((prevState) => {
+      const images = [...prevState.images];
+      images[index] = value;
+      return { ...prevState, images };
+    });
   };
 
   const handleAddInput = () => {
@@ -129,12 +104,12 @@ export const CreateProduct = ({ handleToggleCreate, createToggle }: AdminProduct
           <label className="post-form-label">Зображення-{i + 1}: </label>
           <input
             name={`image${i + 1}`}
-            onChange={(e) => handleImageChange(e, i)}
+            onChange={(e) => handleImageUrlChange(e, i)}
+            value={formData.images[i]}
             style={{ minHeight: "40px" }}
             className="post-form-input"
-            type="file"
-            accept="image/*"
-            multiple
+            type="text"
+            placeholder="Введіть URL зображення"
           />
         </div>
       );
