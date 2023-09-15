@@ -25,7 +25,9 @@
             right: 10px;
         }
         &_box{
-            padding-bottom: 30px;
+            margin-bottom: 15px;
+            max-height: 250px;
+            overflow: hidden;
             &-img{
                 width: 100%;
                 max-width: 100%;
@@ -85,10 +87,6 @@
 @media(max-width: 800px) {
     .products__product{
         max-width: 380px;
-
-        &_box{
-            height: 250px;
-        }
     }
 }
 
