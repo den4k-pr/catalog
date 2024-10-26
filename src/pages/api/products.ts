@@ -9,6 +9,11 @@ export default async function handler(
 ) {
   await connectMongoDB();
 
+  // Додаємо заголовки CORS
+  res.setHeader("Access-Control-Allow-Origin", "*"); // або вкажіть конкретний домен
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE"); // Методи, які дозволені
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type"); // Заголовки, які дозволені
+
   if (req.method === "POST") {
     return handlePost(req, res);
   } else if (req.method === "GET") {
